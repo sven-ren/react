@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import {
   // ConnectedRouter,
   // routerReducer,
-  routerMiddleware
+  routerMiddleware,
   // push
 } from "react-router-redux";
 import createHistory from "history/createBrowserHistory";
@@ -29,7 +29,6 @@ export default function storeConfig(initialState: any) {
     initialState,
     compose(
       applyMiddleware(...middleware),
-    //   window.devToolsExtension ? window.devToolsExtension() : f => f // 使用redux开发工具
     )
   );
   sagaMiddleware.run(rootSaga);
