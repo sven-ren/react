@@ -15,9 +15,9 @@ import ReactDOM from 'react-dom';
 
 
 
-import createHistory from "history/createBrowserHistory";
-import { Provider } from "react-redux";
-import storeConfig from "./store/store";
+import createHistory from 'history/createBrowserHistory';
+import { Provider } from 'react-redux';
+import storeConfig from './store/store';
 import {
   HashRouter,
   BrowserRouter,
@@ -26,12 +26,12 @@ import {
   Link,
   Switch,
   Redirect,
-} from "react-router-dom";
-import { LocaleProvider } from "antd";
-import zh_CN from "antd/lib/locale-provider/zh_CN";
-import "moment/locale/zh-cn";
+} from 'react-router-dom';
+import { LocaleProvider } from 'antd';
+import zh_CN from 'antd/lib/locale-provider/zh_CN';
+import 'moment/locale/zh-cn';
 
-import MceLayout from "@/routes/layout/view";
+import Layout from '@/routes/layout/layout';
 
 
 const store = storeConfig({});
@@ -42,13 +42,11 @@ ReactDOM.render(
     <LocaleProvider locale={zh_CN}>
       <Router history={history}>
         <Switch>
-          <Route path="/" exact render={props => <MceLayout {...props} />} />
-          <Route path="/mce" render={props => <MceLayout {...props} />} />
-          <Redirect exact from="/" to="/home" />
+          <Route path='/' render={(props) => <Layout {...props} />} />
         </Switch>
       </Router>
     </LocaleProvider>
   </Provider>,
-  document.getElementById("root") as HTMLElement
+  document.getElementById('root') as HTMLElement,
 );
 

@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import styles from './app.module.scss';
-import MceLayout from './routes/layout/view';
+import MceLayout from './routes/layout/layout';
 import { Button } from 'antd';
 
 const App: React.FC = () => {
