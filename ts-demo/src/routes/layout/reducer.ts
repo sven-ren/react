@@ -1,50 +1,35 @@
 import * as Actions from './actions';
 
 const initialState = {
-  tenants: [],
-  tenant_id: '',
-  tenant_uuid: '',
+  provinces: [],
+  province_code: '',
 };
 
 export default (state: any = initialState, action: any) => {
   switch (action.type) {
-    case Actions.GET_TENANT_START:
+    case Actions.GET_PROVINCES_START:
       return [];
-    case Actions.GET_TENANT_SUCCESS:
+    case Actions.GET_PROVINCES_SUCCESS:
       return {
-        tenants:
+        provinces:
           action.payload &&
           action.payload.data &&
           action.payload.data.data &&
           [...action.payload.data.data] || [],
-        tenant_id:
+        province_code:
           action.payload &&
           action.payload.data &&
           action.payload.data.data &&
           action.payload.data.data[0] &&
-          action.payload.data.data[0].tenant_id || '',
-        tenant_uuid:
-          action.payload &&
-          action.payload.data &&
-          action.payload.data.data &&
-          action.payload.data.data[0] &&
-          action.payload.data.data[0].tenant_id || '',
-        manager_id:
-          action.payload &&
-          action.payload.data &&
-          action.payload.data.data &&
-          action.payload.data.data[0] &&
-          action.payload.data.data[0].manager_id || '',
+          action.payload.data.data[0].area_code || '',
       };
-    case Actions.GET_TENANT_FAILED:
+    case Actions.GET_PROVINCES_FAILED:
       return { ...state };
-    case Actions.GET_SELECTED_TENANT:
+    case Actions.GET_SELECTED_PROVINCES:
       return {
         ...state,
-        tenants: [...state.tenants],
-        tenant_id: action.payload,
-        tenant_uuid: state.tenants.find((item: any) => item.tenant_id === action.payload ).tenant_id || '',
-        manager_id: state.tenants.find((item: any) => item.tenant_id === action.payload ).manager_id || '',
+        provinces: [...state.provinces],
+        province_code: action.payload,
       };
     default:
       return state;

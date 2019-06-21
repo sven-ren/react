@@ -1,23 +1,13 @@
-// 租户
-export const GET_TENANT_START = "GET_TENANT_START";
-export const GET_TENANT_SUCCESS = "GET_TENANT_SUCCESS";
-export const GET_TENANT_FAILED = "GET_TENANT_FAILED";
+export const GET_PROVINCES_START = 'GET_PROVINCES_START';
+export const GET_PROVINCES_SUCCESS = 'GET_PROVINCES_SUCCESS';
+export const GET_PROVINCES_FAILED = 'GET_PROVINCES_FAILED';
 
-//租户下拉选择
-export const GET_SELECTED_TENANT = "GET_SELECTED_TENANT";
+export const GET_SELECTED_PROVINCES = 'GET_SELECTED_PROVINCES';
 
-// 查询租户列表
-export function getTenants(username: string,callback: Function) {
+export function getList(callback: () => void) {
   return {
-    type: GET_TENANT_START,
-    payload: username,
-    callback
-  };
-}
-// 获取租户下拉菜单项的值
-export function getSelectedTenant(payload: string) {
-  return {
-    type: GET_SELECTED_TENANT,
-    payload
+    type: GET_PROVINCES_START,
+    // payload: username,
+    callback,
   };
 }

@@ -1,20 +1,20 @@
-import { call, put, fork, takeLatest, takeEvery } from "redux-saga/effects";
-import * as Actions from "./actions";
-import ACCOUNT_API from "@/api/common/index";
+import { call, put, fork, takeLatest, takeEvery } from 'redux-saga/effects';
+import * as Actions from './actions';
+import API from '@/api/common/index';
 
-function* getTenants(action: any) {
+function* getProvinces(action: any) {
   try {
-    const tenants = yield call(()=>{ return ACCOUNT_API.getTenants(action.payload.user_name)});
+    const provinces = yield call(() => API.getProvinces());
     yield put({
-      type: Actions.GET_TENANT_SUCCESS,
-      payload: tenants || []
+      type: Actions.GET_PROVINCES_SUCCESS,
+      payload: provinces || [],
     });
-    yield action.callback && action.callback(tenants.data)
+    yield action.callback && action.callback(provinces.data);
   } catch (error) {
-    yield put({ type: Actions.GET_TENANT_FAILED, error });
+    yield put({ type: Actions.GET_PROVINCES_FAILED, error });
   }
 }
 
-export const tenantSaga = [
-  takeEvery(Actions.GET_TENANT_START, getTenants)
+export const provinceSaga = [
+  takeEvery(Actions.GET_PROVINCES_START, getProvinces),
 ];

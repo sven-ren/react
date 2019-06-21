@@ -3,38 +3,31 @@ import {
   Layout,
 } from 'antd';
 import { connect } from 'react-redux';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import { RouteComponentProps } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 import GlobalHeader from '@/components/GlobalHeader';
-import {
-  getTenants,
-} from '@/routes/layout/actions';
+
 import routers from '@/router/router';
-import Home from '@/routes/home/view';
 
 const { Header, Sider, Content } = Layout;
 
-interface IProps {
-  getTenants: () => void;
-}
+// interface IProps {
+//   getList: (callback: (data: any) => void) => void;
+// }
 interface IState {
-  count: number;
+  msg?: string;
 }
 
-class LayoutComponent extends React.Component<IProps, IState> {
+export default class LayoutComponent extends React.Component<{}, IState> {
   public readonly state = {
-    count: 0,
-  };
-  constructor(props: IProps) {
+      msg: 'welcome',
+   } as IState;
+  constructor(props: {}) {
     super(props);
   }
   public componentDidMount() {
-    this.props.getTenants();
-  }
-  public add = () => {
-    this.setState({
-      count: this.state.count + 1,
-    });
+    // this.props.getList((data: any) => {
+    //   window.console.log(data);
+    // });
   }
   public render() {
     return (
@@ -46,6 +39,9 @@ class LayoutComponent extends React.Component<IProps, IState> {
           />
         </Header>
         <Layout>
+          <Sider>
+            sider
+          </Sider>
           <Layout style={{backgroundColor: '#fff'}}>
             <Content style={{ margin: '24px 24px 0', height: '100%' }}>
               <Switch>
@@ -60,13 +56,11 @@ class LayoutComponent extends React.Component<IProps, IState> {
   }
 }
 
-export default connect(
-  (state: any) => ({
-    tenants: state.mce.tenant.tenants,
-    tenant_id: state.mce.tenant.tenant_id,
-    tenant_uuid: state.mce.tenant.tenant_uuid,
-  }),
-  {
-    getTenants,
-  },
-)(LayoutComponent as any);
+// export default connect(
+//   (state: any) => ({
+//     province: state.app.province,
+//   }),
+//   {
+//     getList,
+//   },
+// )(LayoutComponent as any);
