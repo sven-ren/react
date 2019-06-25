@@ -1,6 +1,12 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
-import Home from '@/routes/home/view';
+import { Route } from 'react-router-dom';
+import Loadable from 'react-loadable';
+import loading from './loading';
+
+const Home = Loadable({
+  loader: () => import('@/routes/home/view'),
+  loading,
+});
 const routes = [
     <Route
       key={'home'}

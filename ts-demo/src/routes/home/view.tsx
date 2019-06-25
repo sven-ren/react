@@ -44,7 +44,7 @@ class Home extends React.Component<IProps, IState> {
     ];
     return (
       <div>
-        <Table dataSource={this.state.list} columns={columns}/>
+        <Table dataSource={this.state.list} columns={columns} rowKey='pinyin'/>
       </div>
     );
   }
