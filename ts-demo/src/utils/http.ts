@@ -1,16 +1,14 @@
 import axios from 'axios';
-import { Base64 } from 'js-base64';
-import Store from '@/utils/store';
 import { message } from 'antd';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
-const userInfo = Store.getCurrentUserByCookie('user')
-      ? JSON.parse(Base64.decode(Store.getCurrentUserByCookie('user')))
-      : {};
 // request 拦截器
 axios.interceptors.request.use(
-  (config) => {
-    const Authorization = 'APPCODE 20ada1f203e34ece908b53fef95595c0';
+  (config: any) => {
+    let Authorization = 'APPCODE 20ada1f203e34ece908b53fef95595c0';
+    if (config.url.indexOf('tangshi') !== -1) {
+      Authorization = 'APPCODE 20ada1f203e34ece908b53fef95595c0';
+    }
     return Object.assign({}, config, {
       headers: Object.assign({}, {
         'Content-Type': 'application/json;charset=UTF-8',
@@ -18,7 +16,6 @@ axios.interceptors.request.use(
       }, config.headers),
       // 超时时间
       timeout: 150000,
-      // responseType: config.responseType ? config.responseType : "json"
     });
   },
   (err) => {
@@ -49,7 +46,7 @@ axios.interceptors.response.use(
       } else if (error.response &&
         (!error.response.data && error.response.status === 401)) {
           message.error('用户未登录，请先登录');
-          const timeoutId = setTimeout(() => {
+          setTimeout(() => {
           window.location.href = '/login';
         }, 2000);
       } else if (

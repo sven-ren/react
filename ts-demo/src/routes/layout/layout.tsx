@@ -2,9 +2,9 @@ import React from 'react';
 import {
   Layout,
 } from 'antd';
-import { connect } from 'react-redux';
 import { Switch, Redirect } from 'react-router-dom';
-import GlobalHeader from '@/components/GlobalHeader';
+import GlobalHeader from '@/components/Header';
+import SideBar from '@/components/Sider';
 
 import routers from '@/router/router';
 
@@ -21,17 +21,9 @@ export default class LayoutComponent extends React.Component<{}, IState> {
   public readonly state = {
       msg: 'welcome',
    } as IState;
-  constructor(props: {}) {
-    super(props);
-  }
-  public componentDidMount() {
-    // this.props.getList((data: any) => {
-    //   window.console.log(data);
-    // });
-  }
   public render() {
     return (
-      <Layout>
+      <Layout style={{height: '500px'}}>
         <Header style={{ padding: 0 }}>
           <GlobalHeader
             img=''
@@ -40,7 +32,7 @@ export default class LayoutComponent extends React.Component<{}, IState> {
         </Header>
         <Layout>
           <Sider>
-            sider
+            <SideBar/>
           </Sider>
           <Layout style={{backgroundColor: '#fff'}}>
             <Content style={{ margin: '24px 24px 0', height: '100%' }}>
@@ -55,12 +47,3 @@ export default class LayoutComponent extends React.Component<{}, IState> {
     );
   }
 }
-
-// export default connect(
-//   (state: any) => ({
-//     province: state.app.province,
-//   }),
-//   {
-//     getList,
-//   },
-// )(LayoutComponent as any);

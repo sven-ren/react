@@ -12,8 +12,15 @@ export default (state: any = initialState, action: any) => {
     case Actions.GET_PROVINCES_SUCCESS:
       return {
         provinces:
+          action.payload &&
+          action.payload.data &&
+          action.payload.data.data &&
           [...action.payload.data.data] || [],
         province_code:
+          action.payload &&
+          action.payload.data &&
+          action.payload.data.data &&
+          action.payload.data.data[0] &&
           action.payload.data.data[0].area_code || '',
       };
     case Actions.GET_PROVINCES_FAILED:

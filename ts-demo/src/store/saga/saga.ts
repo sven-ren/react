@@ -1,13 +1,10 @@
-import { fork, all } from 'redux-saga/effects';
-// import { MceClustersSaga } from "@/components/CommonTop/saga";
-// import { MceNamespaceSaga } from "@/components/CommonTop/saga";
+import { all } from 'redux-saga/effects';
 import { provinceSaga } from '@/routes/layout/saga';
-
+import { poetrySaga } from '@/routes/poetry/saga';
 
 export default function* rootSaga() {
   yield all([
-    // ...MceClustersSaga,
-    // ...MceNamespaceSaga,
     ...provinceSaga,
+    ...poetrySaga,
   ]);
 }

@@ -1,22 +1,24 @@
 const proxy = require('http-proxy-middleware');
 module.exports = function(app) {
   app.use(proxy(
-    '/province',
+    '/provinceProxy',
     {
         target: 'http://api02.aliyun.venuscn.com',
         changeOrigin: true,
         secure: false,
         pathRewrite: {
-            '^/province': '/',
+            '^/provinceProxy': '/',
         },
     },
   ));
   app.use(proxy(
-    '/tangshi',
+    '/poetryProxy',
     {
         target: 'http://jisutssbs.market.alicloudapi.com',
+        changeOrigin: true,
+        secure: false,
         pathRewrite: {
-            '^/tangshi': '/',
+            '^/poetryProxy': '/',
         },
     },
   ));

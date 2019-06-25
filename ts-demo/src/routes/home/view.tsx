@@ -1,14 +1,11 @@
 import React from 'react';
 import {
-  Layout,
-  Menu,
   Table,
 } from 'antd';
 import { connect } from 'react-redux';
-import { Switch, Redirect, RouteComponentProps } from 'react-router-dom';
 import {
   getList,
-} from '@/routes/layout/actions';
+} from './actions';
 
 interface IProps {
   getList: (callback: (data: any) => void) => void;
@@ -19,9 +16,6 @@ interface IState {
 
 class Home extends React.Component<IProps, IState> {
   public readonly state = {} as IState;
-  constructor(props: IProps) {
-    super(props);
-  }
   public componentDidMount() {
     this.props.getList((data: any) => {
       this.setState({
