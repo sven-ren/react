@@ -8,7 +8,7 @@ const initialState = {
 export default (state: any = initialState, action: any) => {
   switch (action.type) {
     case Actions.GET_POETRYS_START:
-      return [];
+      return state;
     case Actions.GET_POETRYS_SUCCESS:
       return {
         poetrys:

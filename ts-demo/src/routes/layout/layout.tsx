@@ -5,14 +5,12 @@ import {
 import { Switch, Redirect } from 'react-router-dom';
 import GlobalHeader from '@/components/Header';
 import SideBar from '@/components/Sider';
+import styles from './index.module.scss';
 
 import routers from '@/router/router';
 
 const { Header, Sider, Content } = Layout;
 
-// interface IProps {
-//   getList: (callback: (data: any) => void) => void;
-// }
 interface IState {
   msg?: string;
 }
@@ -23,7 +21,7 @@ export default class LayoutComponent extends React.Component<{}, IState> {
    } as IState;
   public render() {
     return (
-      <Layout style={{height: '500px'}}>
+      <Layout style={{height: '100vh'}}>
         <Header style={{ padding: 0 }}>
           <GlobalHeader
             img=''
@@ -35,7 +33,7 @@ export default class LayoutComponent extends React.Component<{}, IState> {
             <SideBar/>
           </Sider>
           <Layout style={{backgroundColor: '#fff'}}>
-            <Content style={{ margin: '24px 24px 0', height: '100%' }}>
+            <Content className={styles.content}>
               <Switch>
                 <Redirect exact from='/' to='/home' />
                 {routers}
