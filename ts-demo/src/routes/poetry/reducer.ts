@@ -3,6 +3,7 @@ import * as Actions from './actions';
 const initialState = {
   poetrys: [],
   poetry_title: '',
+  poetry_stamp: 0,
 };
 
 export default (state: any = initialState, action: any) => {
@@ -15,6 +16,7 @@ export default (state: any = initialState, action: any) => {
           action.payload.data.reault ? [...action.payload.data.reault.list] : [],
         poetry_title:
           action.payload.data.reault ? action.payload.data.result.list[0].title : '',
+        poetry_stamp: state.poetry_stamp + 1,
       };
     case Actions.GET_POETRYS_FAILED:
       return { ...state };

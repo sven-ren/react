@@ -3,6 +3,7 @@ import * as Actions from './actions';
 const initialState = {
   provinces: [],
   province_code: '',
+  province_stamp: 0,
 };
 
 export default (state: any = initialState, action: any) => {
@@ -15,6 +16,7 @@ export default (state: any = initialState, action: any) => {
           action.payload.data ? [...action.payload.data.data] : [],
         province_code:
           action.payload.data ? action.payload.data.data[0].area_code : '',
+        province_stamp: state.province_stamp + 1,
       };
     case Actions.GET_PROVINCES_FAILED:
       return { ...state };
