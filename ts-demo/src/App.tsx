@@ -7,10 +7,10 @@ import { Button } from 'antd';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
+    <div className='App'>
       <MceLayout/>
     </div>
   );
-}
+};
 
 export default App;
